@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GarisKBT.Views.GarisKBT">
+    <ContentPage.Content>
+
+        <StackLayout>
+            <SearchBar x:Name="searchBarMarga"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="CenterAndExpand"
+                   Placeholder="Cari marga..."
+                   SearchButtonPressed="searchBarMarga_SearchButtonPressed" FontSize="Large"/>
+            <Slider IsVisible="false" BackgroundColor="LightBlue" Maximum="100" Minimum="10" Value="100" ValueChanged="Slider_ValueChanged"></Slider>
+            <ScrollView x:Name="PanelSV" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Both">
+                <StackLayout x:Name="Panel">
+                    <Grid x:Name="GridMain">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                    <!--<ListView x:Name="MargaListView" SeparatorColor="AliceBlue" SeparatorVisibility="None" RowHeight="300" ItemsSource="{Binding Marga}" BackgroundColor="Transparent" SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame CornerRadius="5" BackgroundColor="DarkGray">
+                                            <Label Text="{Binding NIMName}" TextColor="Blue" VerticalOptions="Center" FontSize="20" TextTransform="Uppercase"></Label>
+                                        </Frame>
+                                        <Frame CornerRadius="5"  Grid.Column="1" BackgroundColor="DarkGray">
+                                            <StackLayout>
+                                                <Label Text="{Binding NIMName}" TextColor="Blue" VerticalOptions="Center" FontSize="20" TextTransform="Uppercase"></Label>
+                                                <Entry></Entry>
+                                                <Image Source="batak_toba.png" VerticalOptions="Center" HeightRequest="200" />
+                                            </StackLayout>
+                                        </Frame>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>-->
+                </StackLayout>
+
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
