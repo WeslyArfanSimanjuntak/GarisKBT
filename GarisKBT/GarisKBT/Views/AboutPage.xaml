@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"             
              x:Class="GarisKBT.Views.AboutPage"
              xmlns:vm="clr-namespace:GarisKBT.ViewModels"
              Title="Tentang">
@@ -14,39 +15,42 @@
             <Color x:Key="Accent">#96d1ff</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
-
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="batak_toba.png" VerticalOptions="Center" HeightRequest="200" />
-                </ContentView>
+    
+    <StackLayout>
+            <Frame BackgroundColor="{StaticResource Primary}" Padding="10,10,10,10" Margin="10" 
+                        CornerRadius="5">
+                <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
+                <Label Text="GarisKBT (Garis Keturunan Batak Toba)" FontSize="Title"  TextColor="White"/>
+                <Label Text="Aplikasi ini untuk membantu memetakan garis keturunan sesuai dengan marga pada suku Batak Toba." FontSize="16"  TextColor="White" Padding="0,0,0,0"/>
+                    <Label Padding="0,24,0,0" TextColor="{StaticResource TextColor}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                <Span Text="Jika ada saran dan pertanyaan, hubungi " FontSize="16"  TextColor="White"/>
+                                <Span Text="email : weslyarfan@gmail.com" FontAttributes="Bold" FontSize="16"  TextColor="White"/>
+                                <Span Text=" atau " FontSize="16"  TextColor="White"/>
+                                <Span Text="WA : +62 895-4136-48915" FontAttributes="Bold" FontSize="16"  TextColor="White"/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <ContentView VerticalOptions="FillAndExpand">
+                        <Image Source="batak_toba.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                    </ContentView>
+                </StackLayout>
+            </Frame>
+            <Frame x:Name="FramePenggunaan" BackgroundColor="{StaticResource Primary}" Padding="10,10,10,10" Margin="10" 
+                        CornerRadius="5">
+            <StackLayout>
+                <Label Text="Tentang Aplikasi dan Cara Penggunaan" Padding="10,10,10,10" FontSize="Large" TextColor="White"></Label>
+                <WebView VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand"
+        Source="https://www.youtube.com/embed/8azMAqsuHs0"
+        WidthRequest="500"
+        HeightRequest="500"
+        IsVisible="true"/>
             </StackLayout>
-        </StackLayout>
-        <ScrollView Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
-                <Label Text="GarisKBT (Garis Keturunan Batak Toba)" FontSize="Title"/>
-                <Label Text="Aplikasi ini untuk membantu memetakan garis keturunan sesuai dengan marga pada suku Batak Toba." FontSize="16" Padding="0,0,0,0"/>
-                <Label FontSize="16" Padding="0,24,0,0">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="Jika ada saran dan pertanyaan, hubungi "/>
-                                <Span Text="weslyarfan@gmail.com" FontAttributes="Bold"/>
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <!--<Button Margin="0,10,0,0" Text="Learn more"
-                        Command="{Binding OpenWebCommand}"
-                        BackgroundColor="{StaticResource Primary}"
-                        TextColor="White" />-->
-            </StackLayout>
-        </ScrollView>
-    </Grid>
-
+            
+            </Frame>
+    </StackLayout>
 </ContentPage>

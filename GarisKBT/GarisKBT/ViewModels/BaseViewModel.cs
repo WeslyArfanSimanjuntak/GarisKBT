@@ -18,7 +18,10 @@ namespace GarisKBT.ViewModels
             get { return isBusy; }
             set { SetProperty(ref isBusy, value); }
         }
-
+        public bool IsNotBusy
+        {
+            get { return !isBusy; }
+        }
         string title = string.Empty;
         public string Title
         {

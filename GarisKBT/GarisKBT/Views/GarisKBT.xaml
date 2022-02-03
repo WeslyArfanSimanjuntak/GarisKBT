@@ -11,13 +11,23 @@
                    Placeholder="Cari marga..."
                    SearchButtonPressed="searchBarMarga_SearchButtonPressed" FontSize="Large"/>
             <Slider IsVisible="false" BackgroundColor="LightBlue" Maximum="100" Minimum="10" Value="100" ValueChanged="Slider_ValueChanged"></Slider>
-            <ScrollView x:Name="PanelSV" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Both">
-                <StackLayout x:Name="Panel">
-                    <Grid x:Name="GridMain">
+            <ScrollView x:Name="PanelSV" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Both">
+                <StackLayout x:Name="Panel" HorizontalOptions="Fill">
+                    <Grid x:Name="GridMain"  Padding="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
+                        <Frame CornerRadius="5" BackgroundColor="DarkGray">
+                            <Label Text="{Binding NIMName}" TextColor="Blue" VerticalOptions="Center" FontSize="20" TextTransform="Uppercase"></Label>
+                        </Frame>
+                        <Frame CornerRadius="5"  Grid.Column="1" BackgroundColor="DarkGray">
+                            <StackLayout>
+                                <Label Text="{Binding NIMName}" TextColor="Blue" VerticalOptions="Center" FontSize="20" TextTransform="Uppercase"></Label>
+                                <Entry></Entry>
+                                <Image Source="batak_toba.png" VerticalOptions="Center" HeightRequest="200" />
+                            </StackLayout>
+                        </Frame>
                     </Grid>
                     <!--<ListView x:Name="MargaListView" SeparatorColor="AliceBlue" SeparatorVisibility="None" RowHeight="300" ItemsSource="{Binding Marga}" BackgroundColor="Transparent" SelectionMode="None">
                         <ListView.ItemTemplate>

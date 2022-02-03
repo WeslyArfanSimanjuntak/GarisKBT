@@ -12,12 +12,82 @@ namespace GarisKBT.Data
     public class RestServices : IRestService
     {
         HttpClient client;
-        public List<Marga> Items { get; private set; }
         public RestServices()
         {
             client = new HttpClient();
             client.MaxResponseContentBufferSize = 256000;
         }
+
+        public List<Marga> Items { get; private set; }
+        public async Task<MargaDetail> GetMargaDetailAsync(int id)
+        {
+            MargaDetail marga;
+            var uri = new Uri(string.Format(Constants.DetailMarga + "/" + id, string.Empty));
+            try
+            {
+
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    marga = JsonConvert.DeserializeObject<MargaDetail>(content);
+                    return marga;
+                }
+            }
+            catch (Exception ex)
+            {
+                App.error = ex.Message;
+                Debug.WriteLine(@"ERROR {0}", ex.Message);
+            }
+            return null;
+        }
+
+        public async Task<List<GetSilsilahResult>> GetSilsilahAsync(int id)
+        {
+            List<GetSilsilahResult> silsilahResult;
+            var uri = new Uri(string.Format(Constants.GetSilsilah + "/" + id, string.Empty));
+            try
+            {
+
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    silsilahResult = JsonConvert.DeserializeObject<List<GetSilsilahResult>>(content);
+                    return silsilahResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                App.error = ex.Message;
+                Debug.WriteLine(@"ERROR {0}", ex.Message);
+            }
+            return null;
+        }
+
+        public async Task<List<GetSilsilahResult>> GetChildsAsync(int id)
+        {
+            List<GetSilsilahResult> silsilahResult;
+            var uri = new Uri(string.Format(Constants.GetChilds + "/" + id, string.Empty));
+            try
+            {
+
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    silsilahResult = JsonConvert.DeserializeObject<List<GetSilsilahResult>>(content);
+                    return silsilahResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                App.error = ex.Message;
+                Debug.WriteLine(@"ERROR {0}", ex.Message);
+            }
+            return null;
+        }
+
         public async Task<List<Marga>> RefreshDataAsync()
         {
             Items = new List<Marga>();
@@ -60,7 +130,7 @@ namespace GarisKBT.Data
         //}
         public async Task SaveSearchDataAsync(string jsonData)
         {
-            var uriPost = new Uri(string.Format(Constants.SaveSearchData, string.Empty)); 
+            var uriPost = new Uri(string.Format(Constants.SaveSearchData, string.Empty));
             //var uriPut = new Uri(string.Format(Constants.RestUrl, item.ID)); 
             try
             {
@@ -68,7 +138,7 @@ namespace GarisKBT.Data
                 var encodedContent = new FormUrlEncodedContent(parameters);
                 //var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = null;
-                
+
                 response = await client.PostAsync(uriPost, encodedContent);
 
                 if (response.IsSuccessStatusCode)

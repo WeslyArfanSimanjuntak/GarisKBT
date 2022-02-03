@@ -12,6 +12,8 @@ namespace GarisKBT
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
+            Routing.RegisterRoute(nameof(MargaDetailPage), typeof(MargaDetailPage));
+            Routing.RegisterRoute(nameof(MargaSilsilahPage), typeof(MargaSilsilahPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
         }
 

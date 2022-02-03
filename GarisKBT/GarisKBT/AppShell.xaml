@@ -15,7 +15,7 @@
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
-                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.ForegroundColor" Value="#f2e1c2" />
                 <Setter Property="Shell.TitleColor" Value="White" />
                 <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
                 <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
@@ -79,10 +79,16 @@
         https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
     -->
     <FlyoutItem Title="Marga" Icon="icon_feed.png">
-        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:GarisKBT}" />
+        <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:MargasPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Wikipedia Batak" Icon="icon_feed.png">
+        <ShellContent Route="WikipediaBatak" ContentTemplate="{DataTemplate local:WikipediaBatak}" />
     </FlyoutItem>
     <FlyoutItem Title="Tentang" Icon="icon_about.png">
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Items" Icon="icon_about.png">
+        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
     <!--<FlyoutItem Title="Browse" Icon="icon_feed.png">
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />

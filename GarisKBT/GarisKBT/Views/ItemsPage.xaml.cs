@@ -28,5 +28,15 @@ namespace GarisKBT.Views
             base.OnAppearing();
             _viewModel.OnAppearing();
         }
+
+        private void searchBarMarga_SearchButtonPressed(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchBarMarga_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

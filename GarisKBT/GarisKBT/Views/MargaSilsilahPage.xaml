@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GarisKBT.Views.MargaSilsilahPage"
+             Title="{Binding Name, StringFormat='Silsilah - {0:0F}'}">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+            <StackLayout IsVisible="{Binding IsBusy}" Padding="12"
+                 AbsoluteLayout.LayoutFlags="PositionProportional"
+                 AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+
+                <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="true" Color="{StaticResource Primary}" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
+
+                <Label Text="Loading..." HorizontalOptions="Center" TextColor="White"/>
+
+            </StackLayout>
+
+
+            <ScrollView Orientation="Both" x:Name="ScrollView" IsVisible="{Binding IsNotBusy}">
+                <StackLayout Padding="10,10,10,10" x:Name="StackLayout">
+                </StackLayout>
+
+            </ScrollView>
+            <!--<Slider Maximum="200" Minimum="20" x:Name="Slider" ValueChanged="Slider_ValueChanged"></Slider>-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
