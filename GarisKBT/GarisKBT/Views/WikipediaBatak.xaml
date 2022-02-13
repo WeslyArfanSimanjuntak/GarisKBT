@@ -2,6 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GarisKBT.Views.WikipediaBatak">
+    <Shell.TitleView>
+        <Label Padding="0" Margin="0" HorizontalOptions="Center" Text="Wikipedia Suku Batak" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="14" TextColor="White" />
+    </Shell.TitleView>
     <ContentPage.Content>
         <StackLayout>
             <WebView VerticalOptions="FillAndExpand"
@@ -20,8 +23,8 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button Clicked="BackButton_Clicked" x:Name="BackButton" Text="&lt; Kembali"></Button>
-                        <Button Clicked="NextButton_Clicked" Grid.Column="1" x:Name="NextButton" Text="Berikutnya >"></Button>
+                        <Button Clicked="BackButton_Clicked" x:Name="BackButton" Text="&lt; Kembali" FontSize="12"></Button>
+                        <Button Clicked="NextButton_Clicked" Grid.Column="1" x:Name="NextButton" Text="Berikutnya >" FontSize="12"></Button>
                     </Grid>
                     
                 </StackLayout>

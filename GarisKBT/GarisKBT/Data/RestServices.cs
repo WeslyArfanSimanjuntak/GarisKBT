@@ -108,6 +108,27 @@ namespace GarisKBT.Data
             }
             return Items;
         }
+        public async Task<string> GetGuidanceLink(string key)
+        {
+            var keyValue = new KeyValue();
+            var uri = new Uri(string.Format(Constants.GetGuidance + "?key=" + key, string.Empty));
+            try
+            {
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    keyValue = JsonConvert.DeserializeObject<KeyValue>(content);
+                }
+            }
+            catch (Exception ex)
+            {
+                App.error = ex.Message;
+                Debug.WriteLine(@"ERROR {0}", ex.Message);
+            }
+            return keyValue.Value;
+        }
+
         //public async Task<bool> SearchDataPostAsync()
         //{
         //    Items = new List<Marga>();

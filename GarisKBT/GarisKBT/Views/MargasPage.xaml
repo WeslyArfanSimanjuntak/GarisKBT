@@ -2,13 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GarisKBT.Views.MargasPage"
-             Title="{Binding Title}"
              xmlns:local="clr-namespace:GarisKBT.ViewModels"
              xmlns:model="clr-namespace:GarisKBT.Models"
              x:Name="BrowseMargasPage">
+    <Shell.TitleView>
+        <Label Padding="0" Margin="0" HorizontalOptions="Center" Text="{Binding Title}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="14" TextColor="White" />
+    </Shell.TitleView>
     <ContentPage.Content>
         <StackLayout>
             <SearchBar x:Name="searchBar"
+                       FontSize="14"
                    HorizontalOptions="Fill"
                    VerticalOptions="CenterAndExpand"
                    Placeholder="Cari marga..." TextColor="{StaticResource TextColor}" SearchButtonPressed="searchBar_SearchButtonPressed" TextChanged="searchBar_TextChanged" CancelButtonColor="{StaticResource Primary}"></SearchBar>
@@ -28,21 +31,21 @@
                                     <StackLayout x:DataType="model:Marga">
                                         <Label Text="{Binding Name}" 
                             LineBreakMode="WordWrap"
-                            FontSize="16" TextColor="{StaticResource TextColor}" HorizontalOptions="Center" TextTransform="Uppercase"/>
+                            FontSize="14" TextColor="{StaticResource TextColor}" HorizontalOptions="Center" TextTransform="Uppercase"/>
                                         <Label Text="{Binding NIM}"  HorizontalOptions="Center"  
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="13" TextColor="{StaticResource TextColor}"></Label>
+                            FontSize="12" TextColor="{StaticResource TextColor}"></Label>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
                                             <Button Command="{Binding Source={RelativeSource AncestorType={x:Type local:MargasViewModel}}, Path=ItemSelectedSilsilah}"		
-                                CommandParameter="{Binding .}" BorderColor="White" BorderWidth="1" CornerRadius="5" x:Name="NextButton" Text="Silsilah"></Button>
+                                CommandParameter="{Binding .}" Margin="0" Padding="0" BorderColor="White" BorderWidth="1" CornerRadius="5" x:Name="NextButton" FontSize="10" Text="Silsilah"></Button>
                                             <Button Command="{Binding Source={RelativeSource AncestorType={x:Type local:MargasViewModel}}, Path=ItemTapped}"		
-                                CommandParameter="{Binding .}" BorderColor="White" BorderWidth="1" CornerRadius="5"  Grid.Column="1"  x:Name="BackButton" Text="Detail"></Button>
-                                            
+                                CommandParameter="{Binding .}" Margin="0" Padding="0"  BorderColor="White" BorderWidth="1" CornerRadius="5"  Grid.Column="1"  x:Name="BackButton" FontSize="10" Text="Detail"></Button>
+
                                         </Grid>
                                         <!--<StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer 

@@ -1,8 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GarisKBT.Views.MargaSilsilahPage"
-             Title="{Binding Name, StringFormat='Silsilah - {0:0F}'}">
+             x:Class="GarisKBT.Views.MargaSilsilahPage">
+    <Shell.TitleView>
+        <Label Padding="0" Margin="0" x:Name="LB" HorizontalOptions="Center" Text="{Binding Name, StringFormat='Silsilah - {0:0F} (Browser)'} " HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="14" TextColor="White">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped">
+                    
+                </TapGestureRecognizer>
+            </Label.GestureRecognizers>
+        </Label>
+    </Shell.TitleView>
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
             <StackLayout IsVisible="{Binding IsBusy}" Padding="12"
@@ -18,10 +26,10 @@
 
             <ScrollView Orientation="Both" x:Name="ScrollView" IsVisible="{Binding IsNotBusy}">
                 <StackLayout Padding="10,10,10,10" x:Name="StackLayout">
+                    
                 </StackLayout>
 
             </ScrollView>
-            <!--<Slider Maximum="200" Minimum="20" x:Name="Slider" ValueChanged="Slider_ValueChanged"></Slider>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

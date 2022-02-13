@@ -7,6 +7,7 @@
     -->
     <Application.Resources>
         <ResourceDictionary>
+            <x:Int16 x:Key="Padding">10</x:Int16>
             <Color x:Key="Primary">#f28705</Color>
             <Color x:Key="TextColor">#593122</Color>
             <Style TargetType="Button">

@@ -12,6 +12,8 @@ namespace GarisKBT.Data
         Task<MargaDetail> GetMargaDetailAsync(int id);
         Task<List<GetSilsilahResult>> GetSilsilahAsync(int id);
         Task<List<GetSilsilahResult>> GetChildsAsync(int id);
+        Task<string> GetGuidanceLink(string key);
+        
         Task SaveSearchDataAsync(string jsonData);
     }
 }

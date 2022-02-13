@@ -1,4 +1,5 @@
-﻿using GarisKBT.Helper;
+﻿using Xamarin.Essentials;
+using GarisKBT.Helper;
 using GarisKBT.Models;
 using GarisKBT.Services;
 using GarisKBT.ViewModels;
@@ -27,8 +28,33 @@ namespace GarisKBT.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            //ShowSilsilahWeb();
             ShowSilsilah();
         }
+        public async void ShowSilsilahWeb()
+        {
+            if (IsBusy)
+            {
+                return;
+            }
+            try
+            {
+                IsBusy = true;
+                //var silsilahResult = await App.MargaManager.GetSilsilahAsync(this._viewModel.ItemId);
+                await Browser.OpenAsync(Constants.GenerateSilsilah + "/" + this._viewModel.ItemId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+
+        }
+
         public async void ShowSilsilah()
         {
             try
@@ -49,11 +75,13 @@ namespace GarisKBT.Views
                     {
                         var frame = new Frame();
                         frame.BorderColor = Color.White;
+
                         var label = new Label()
                         {
                             Text = item.Nama.ToUpper(),
                             HorizontalTextAlignment = TextAlignment.Center,
-                            TextColor = Color.White
+                            TextColor = Color.White,
+                            FontSize = 12
                         };
                         var labelNim = new Label()
                         {
@@ -63,20 +91,12 @@ namespace GarisKBT.Views
                             HorizontalTextAlignment = TextAlignment.Center,
 
                         };
-                        var labelSLDetail = new Label()
-                        {
-                            Text = stackLayout.StyleId,
-                            TextColor = Color.White,
-                            FontSize = 8,
-                            HorizontalTextAlignment = TextAlignment.Center,
 
-                        };
                         frame.CornerRadius = 5;
                         //frame.Padding = new Thickness(5);
                         var slFrame = new StackLayout();
                         slFrame.Children.Add(label);
                         slFrame.Children.Add(labelNim);
-                        slFrame.Children.Add(labelSLDetail);
                         frame.Content = slFrame;
                         frame.StyleId = item.nim;
                         if (item.isAncestor)
@@ -182,7 +202,8 @@ namespace GarisKBT.Views
                     {
                         Text = item.Nama.ToUpper(),
                         HorizontalTextAlignment = TextAlignment.Center,
-                        TextColor = Color.White
+                        TextColor = Color.White,
+                        FontSize = 12
                     };
                     var labelNim = new Label()
                     {
@@ -192,22 +213,12 @@ namespace GarisKBT.Views
                         HorizontalTextAlignment = TextAlignment.Center,
 
                     };
-                    var labelSLDetail = new Label()
-                    {
-                        Text = stackLayout.StyleId,
-                        TextColor = Color.White,
-                        FontSize = 8,
-                        HorizontalTextAlignment = TextAlignment.Center,
-
-                    };
-
 
                     frame.CornerRadius = 5;
                     //frame.Padding = new Thickness(5);
 
                     slFrame.Children.Add(label);
                     slFrame.Children.Add(labelNim);
-                    slFrame.Children.Add(labelSLDetail);
                     frame.Content = slFrame;
                     if (item.isAncestor)
                     {
@@ -268,7 +279,8 @@ namespace GarisKBT.Views
                         {
                             Text = item.Nama.ToUpper(),
                             HorizontalTextAlignment = TextAlignment.Center,
-                            TextColor = Color.White
+                            TextColor = Color.White,
+                            FontSize = 12
                         };
                         var labelNim = new Label()
                         {
@@ -329,7 +341,8 @@ namespace GarisKBT.Views
                     {
                         Text = item.Nama.ToUpper(),
                         HorizontalTextAlignment = TextAlignment.Center,
-                        TextColor = Color.White
+                        TextColor = Color.White,
+                        FontSize = 12
                     };
                     var labelNim = new Label()
                     {
@@ -380,5 +393,11 @@ namespace GarisKBT.Views
 
         }
 
+        
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            ShowSilsilahWeb();
+        }
     }
 }

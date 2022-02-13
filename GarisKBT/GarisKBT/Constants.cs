@@ -11,5 +11,7 @@ namespace GarisKBT
         public static string GetSilsilah = HostName + "/Margas/GetSilsilah"; 
         public static string GetChilds = HostName + "/Margas/GetChilds"; 
         public static string SaveSearchData = HostName + "/Margas/Search"; 
+        public static string GetGuidance = HostName + "/Margas/KeyValue"; 
+        public static string GenerateSilsilah = HostName + "/Margas/GenerateSilsilah"; 
     }
 }
