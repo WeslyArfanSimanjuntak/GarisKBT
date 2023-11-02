@@ -87,7 +87,28 @@ namespace GarisKBT.Data
             }
             return null;
         }
+        public async Task<List<Marga>> GetTasksAsyncSearchByName(string name)
+        {
 
+            Items = new List<Marga>();
+            var uri = new Uri(string.Format(Constants.RestUrlSearchByName + name, string.Empty));
+            try
+            {
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    Items = JsonConvert.DeserializeObject<List<Marga>>(content);
+                }
+            }
+            catch (Exception ex)
+            {
+                App.error = ex.Message;
+                Debug.WriteLine(@"ERROR {0}", ex.Message);
+            }
+            return Items;
+
+        }
         public async Task<List<Marga>> RefreshDataAsync()
         {
             Items = new List<Marga>();

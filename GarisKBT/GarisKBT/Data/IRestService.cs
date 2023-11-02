@@ -9,6 +9,7 @@ namespace GarisKBT.Data
     public interface IRestService
     {
         Task<List<Marga>> RefreshDataAsync();
+        Task<List<Marga>> GetTasksAsyncSearchByName(string name);
         Task<MargaDetail> GetMargaDetailAsync(int id);
         Task<List<GetSilsilahResult>> GetSilsilahAsync(int id);
         Task<List<GetSilsilahResult>> GetChildsAsync(int id);

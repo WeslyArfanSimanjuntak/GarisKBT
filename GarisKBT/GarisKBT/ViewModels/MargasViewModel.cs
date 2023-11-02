@@ -1,14 +1,12 @@
 ﻿using GarisKBT.Models;
 using GarisKBT.Views;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Plugin.Toast;
 using Xamarin.Forms;
-
 namespace GarisKBT.ViewModels
 {
     public class MargasViewModel : BaseViewModel
@@ -69,9 +67,10 @@ namespace GarisKBT.ViewModels
             try
             {
                 Margas.Clear();
-                var margas = await App.MargaManager.GetTasksAsync();
-                var searched = margas.Where(x => x.Name.ToLowerInvariant().Contains(text.ToLowerInvariant()));
-                foreach (var item in searched)
+                var margas = await App.MargaManager.GetTasksAsyncSearchByName(text);
+                //var searched = margas.Where(x => x.Name.ToLowerInvariant().Contains(text.ToLowerInvariant()));
+                
+                foreach (var item in margas)
                 {
                     Margas.Add(item);
                 }
@@ -113,7 +112,7 @@ namespace GarisKBT.ViewModels
                         }
                     }
                 }
-                
+
 
             }
             catch (Exception ex)

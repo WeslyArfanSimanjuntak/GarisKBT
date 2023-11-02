@@ -1,12 +1,8 @@
-﻿using GarisKBT.ViewModels;
+﻿using GarisKBT.Models;
+using GarisKBT.ViewModels;
+using Plugin.Toast;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Xaml;
 
 namespace GarisKBT.Views
@@ -30,7 +26,14 @@ namespace GarisKBT.Views
         {
             _viewModel.Search = searchBar.Text;
             _viewModel.IsSearch = true;
+            //DisplayAlert(,"Data Not Found");
+            ;
             await _viewModel.SearchItems(searchBar.Text);
+            if (_viewModel.Margas.Count == 0)
+            {
+                await DisplayAlert("Info", "Marga Tidak Ditemukan", "Ok");
+                //CrossToastPopUp.Current.ShowToastError("Marga Tidak Ditemukan");
+            }
         }
 
         private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
